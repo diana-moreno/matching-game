@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+       <title>Fairytale Matching Game</title>
+       <link type="text/css" rel="stylesheet" href="stylesheets/styles.css" media="screen">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    </head>
+    <body>
+      <div id="background-image">
+        <img src="./img/castillo-fondo-vector.png" alt="img-castle">
+      </div>
+      <div id="instructions-container">
+        <h1>Fairytale Matching Game</h1>
+        <ul>
+          <li>The story characters have been hidden.</li>
+          <li>Every character is placed two times in the coffers.</li>
+          <li>You can select only two coffers every turn.</li>
+          <li>Your mission is to find the pair of characters in the least number of tries.</li>
+          <li>When a pair is found, both will remain face up, otherwise, will be turned down.</li>
+          <li>Less number of tries are better scores!</li>
+        </ul>
+        <div>
+          <button id="play-game">Play game</button>
+        </div>
+      </div>
+      <div id="container">
+        <div id="game-container">
+          <div id="card1" class="card">
+            <img class="back" src="./img/icon-coffer-transp.png">
+            <img class="front">
+          </div>
+          <div id="card2" class="card">
+            <img class="back" src="./img/icon-coffer-transp.png">
+            <img class="front">
+          </div>
+          <div id="card3" class="card">
+            <img class="back" src="./img/icon-coffer-transp.png">
+            <img class="front">
+          </div>
+          <div id="card4" class="card">
+            <img class="back" src="./img/icon-coffer-transp.png">
+            <img class="front">
+          </div>
+          <div id="card5" class="card">
+            <img class="back" src="./img/icon-coffer-transp.png">
+            <img class="front">
+          </div>
+          <div id="card6" class="card">
+            <img class="back" src="./img/icon-coffer-transp.png">
+            <img class="front">
+          </div>
+          <div id="card7" class="card">
+            <img class="back" src="./img/icon-coffer-transp.png">
+            <img class="front">
+          </div>
+          <div id="card8" class="card">
+            <img class="back" src="./img/icon-coffer-transp.png">
+            <img class="front">
+          </div>
+          <div id="card9" class="card">
+            <img class="back" src="./img/icon-coffer-transp.png">
+            <img class="front">
+          </div>
+          <div id="card10" class="card">
+            <img class="back" src="./img/icon-coffer-transp.png">
+            <img class="front">
+          </div>
+          <div id="card11" class="card">
+            <img class="back" src="./img/icon-coffer-transp.png">
+            <img class="front">
+          </div>
+          <div id="card12" class="card">
+            <img class="back" src="./img/icon-coffer-transp.png">
+            <img class="front">
+          </div>
+          <div id="card13" class="card">
+            <img class="back" src="./img/icon-coffer-transp.png">
+            <img class="front">
+          </div>
+          <div id="card14" class="card">
+            <img class="back" src="./img/icon-coffer-transp.png">
+            <img class="front">
+          </div>
+          <div id="card15" class="card">
+            <img class="back" src="./img/icon-coffer-transp.png">
+            <img class="front">
+          </div>
+          <div id="card16" class="card">
+            <img class="back" src="./img/icon-coffer-transp.png">
+            <img class="front">
+          </div>
+          <div id="card17" class="card">
+            <img class="back" src="./img/icon-coffer-transp.png">
+            <img class="front">
+          </div>
+          <div id="card18" class="card">
+            <img class="back" src="./img/icon-coffer-transp.png">
+            <img class="front">
+          </div>
+          <div id="card19" class="card">
+            <img class="back" src="./img/icon-coffer-transp.png">
+            <img class="front">
+          </div>
+          <div id="card20" class="card">
+            <img class="back" src="./img/icon-coffer-transp.png">
+            <img class="front">
+          </div>
+          <div id="card21" class="card">
+            <img class="back" src="./img/icon-coffer-transp.png">
+            <img class="front">
+          </div>
+          <div id="card22" class="card">
+            <img class="back" src="./img/icon-coffer-transp.png">
+            <img class="front">
+          </div>
+          <div id="card23" class="card">
+            <img class="back" src="./img/icon-coffer-transp.png">
+            <img class="front">
+          </div>
+          <div id="card24" class="card">
+            <img class="back" src="./img/icon-coffer-transp.png">
+            <img class="front">
+          </div>
+        </div>
+      </div>
+      <div id="points-container">
+          <h2 id="matches">Matches:&nbsp<span>0</span></h2>
+          <h2 id="failures">Failures:&nbsp<span>0</span></h2>
+        </div>
+      <div id='win'>
+        <img src="./img/win.jpg">
+        <h1>YOU WIN!</h1>
+        <button id='play-again'>PLAY AGAIN</button>
+      </div>
+    </body>
+    <script type="text/javascript" src="./src/index.js"></script>
+</html>

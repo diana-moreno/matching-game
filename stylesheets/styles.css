@@ -1,0 +1,133 @@
+html {
+  font-size: 10px;
+  height: 100%;
+  width: 100%;
+}
+body {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  background-color: #ffc107;
+  justify-content: space-evenly;
+  align-items: center;
+  overflow: hidden;
+  background-size: cover;
+}
+#background-image > img {
+  width: 800px;
+}
+h1 {
+  color: rgba(215, 40, 40, 0.9);
+  font-weight: bolder;
+  font-size: 6rem;
+  text-align: center;
+  text-shadow: 0px 0px 20px rgba(150, 150, 150, 1);
+}
+li {
+  color: #456783;
+  font-weight: bolder;
+  font-size: 2.5rem;
+  text-align: center;
+  text-shadow: 1px #ff0000;
+  text-shadow: 1px #ff0000;
+  list-style: none;
+  line-height: 4rem;
+}
+#instructions-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+button {
+  width: 15rem;
+  height: 4rem;
+  background-color: rgba(215, 40, 40, 0.9);
+  border: 0;
+  color: white;
+  font-size: 2rem;
+  font-weight: bolder;
+  margin: 4rem;
+}
+button:hover {
+  cursor: pointer;
+}
+#container {
+  width: 940px;
+  height: 638px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff9c;
+  display: none;
+  border: 24px solid #607D8B;
+}
+#game-container {
+  display: grid;
+  width: 885px;
+  height: 586px;
+  grid-template: repeat(4, 1fr) / repeat(6, 1fr);
+  grid-gap: 2rem;
+}
+.front {
+  display: none;
+  width: 10rem;
+}
+.back {
+  width: 13rem;
+}
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#points-container {
+  display: none;
+  border: 8px solid #607D8B;
+  background-color: #ffffff9c;
+  padding: 1rem;
+  color: #fbfbfb;
+}
+#points-container > h2 {
+  display: inline-flex;
+  color: white;
+  font-size: 2rem;
+  font-weight: bolder;
+}
+h2#failures {
+  color: red;
+}
+h2#matches {
+  color: green;
+}
+
+
+
+
+#win {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#win > img {
+  width: 800px;
+}
+#win > h1,
+#win > button {
+  color: white
+  font-weight: bold;
+  color: white;
+  text-shadow: none;
+  margin: 2rem;
+}
+#win > button {
+  background-color: #172465;
+}
+
+
+
+
+
+
+
+
