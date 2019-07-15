@@ -100,9 +100,6 @@ h2#matches {
   color: green;
 }
 
-
-
-
 #win {
   display: none;
   justify-content: center;
@@ -123,7 +120,11 @@ h2#matches {
 #win > button {
   background-color: #172465;
 }
-
+#design {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+}
 
 
 

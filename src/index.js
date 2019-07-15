@@ -1,11 +1,10 @@
+//función que cambia el aspecto visual de la página mostrando el juego
 function initGame() {
-  $('#play-game').click(function() {
-    $('body').attr('style', 'background-image : url(./img/1769.jpg)')
-    $('#instructions-container').hide()
-    $('#background-image > img').hide()
-    $('#points-container').attr('style', 'display : grid')
-    $('#container').attr('style', 'display : flex')
-  })
+  $('body').attr('style', 'background-image : url(./img/1769.jpg)')
+  $('#instructions-container').hide()
+  $('#background-image > img').hide()
+  $('#points-container').attr('style', 'display : grid')
+  $('#container').attr('style', 'display : flex')
 }
 //nombres de las imágenes y posiciones de las mismas en el DOM (divs que los contienen)
 const imgFrontCards = ['icon-1', 'icon-2', 'icon-3', 'icon-4', 'icon-5', 'icon-6', 'icon-7', 'icon-8', 'icon-9', 'icon-10', 'icon-11', 'icon-12', 'icon-1', 'icon-2', 'icon-3', 'icon-4', 'icon-5', 'icon-6', 'icon-7', 'icon-8', 'icon-9', 'icon-10', 'icon-11', 'icon-12']
@@ -52,28 +51,52 @@ function setRandomCards(game) {
   setImagesInDom(game)
 }
 
-//función que comprueba si las cartas elegidas son pareja y establece puntos de acierto o de fallo.
-function checkIfPairs(game) {
-  if(game.length === 2) {
-    for(let i in game) {
-      if(game[0].image === game[1].image) {
-        game[i].status = 'pair'
-        counterSucces += 0.5;
-        $('#matches').text('Matches: ' + counterSucces)
-      } else {
-        function callbackFunction() {
-          $('#' + game[i].position + '> img.front').hide()
-          $('#' + game[i].position + '> img.back').show()
-          game[i].status = 'back'
-        }
-        var timeoutId = setTimeout(callbackFunction, 800)
-        counterFailure += 0.5;
-        $('#failures').text('Failures: ' + counterFailure)
+//función que genera el funcionamiento principal del juego: gira las cartas seleccionadas, comprueba si son pareja y si se ha ganado
+function addPlayBehaviorToCards(game) {
+  game.forEach(card => {
+    $('#' + card.position).click(function() {
+      $('#' + card.position + '> img.back').hide()
+      $('#' + card.position + '> img.front').show()
+      card.status = 'front'
+      let cardsWithFront = game.filter(card => card.status === "front")
+      if(cardsWithFront.length === 2) {
+        checkIfPairs(cardsWithFront)
+        checkIfWin(game)
       }
+    })
+  })
+}
+
+
+/**
+ * Checks if the given cardsWithFront array are a pair and adds the points
+ *   accordingly depending of a hit or miss
+ * @param  {array} cardsWithFront blalbalabab
+ */
+function checkIfPairs(cardsWithFront) {
+  for(let i in cardsWithFront) {
+    if(cardsWithFront[0].image === cardsWithFront[1].image) {
+      cardsWithFront[i].status = 'pair'
+      counterSucces += 0.5;
+      $('#matches').text('Matches: ' + counterSucces)
+    } else {
+      function callbackFunction() {
+        $('#' + cardsWithFront[i].position + '> img.front').hide()
+        $('#' + cardsWithFront[i].position + '> img.back').show()
+        cardsWithFront[i].status = 'back'
+      }
+      var timeoutId = setTimeout(callbackFunction, 800)
+      counterFailure += 0.5;
+      $('#failures').text('Failures: ' + counterFailure)
     }
   }
 }
-//función que comprueba cuando el usuario gana, que es cuando ha emparejado todas las cartas
+
+
+/**
+ * Checks if we have a win condition when all the cards have a flipped pair
+ * @param  {Array} game the status of the game
+ */
 function checkIfWin(game) {
   let cardsPair = game.filter(elem => elem.status === 'pair')
   if(cardsPair.length === 24) {
@@ -85,43 +108,35 @@ function checkIfWin(game) {
   }
 }
 
-//al presionar el botón de play again, el juego se resetea para volver a jugar
-function playAgain(game) {
-  $('#play-again').click(function() {
-    $('#win').hide();
-    $('body').attr('style', 'background-image : url(./img/1769.jpg)')
-    $('#container').attr('style', 'display : flex')
-    $('#points-container').attr('style', 'display : grid')
-    counterSucces = 0
-    counterFailure = 0
-    $('#matches').text('Matches: ' + counterSucces)
-    $('#failures').text('Failures: ' + counterFailure)
-    game.forEach(elem => {
+
+/**
+ * Alters the dom elements to reflect a new game
+ */
+function playAgain() {
+  $('#win').hide();
+  $('body').attr('style', 'background-image : url(./img/1769.jpg)')
+  $('#container').attr('style', 'display : flex')
+  $('#points-container').attr('style', 'display : grid')
+  counterSucces = 0
+  counterFailure = 0
+  $('#matches').text('Matches: ' + counterSucces)
+  $('#failures').text('Failures: ' + counterFailure)
+  gameStructure.forEach(elem => {
     elem.status = 'back';
-    elem.image = 'new';
     $('#' + elem.position + '> img.front').hide()
     $('#' + elem.position + '> img.back').show()
-    })
-    matchingGame(game)
   })
+  setRandomCards(gameStructure)
 }
 
-//función general que llama a la función que coloca las cartas en su lugar aleatorio, que muestra las dos cartas elegidas por el usuario y llama a la función que comprueba si son pareja, y llama a la función que comprueba si se ha ganado.
-function matchingGame(game) {
-  initGame()
-  setRandomCards(game)
-  game.forEach(elem => {
-    $('#' + elem.position).click(function() {
-      $('#' + elem.position + '> img.back').hide()
-      $('#' + elem.position + '> img.front').show()
-      elem.status = 'front'
-      let cardsWithFront = game.filter(elem => elem.status === "front")
-      if(cardsWithFront.length === 2) {
-        checkIfPairs(cardsWithFront)
-        checkIfWin(game)
-        playAgain(game)
-      }
-    })
-  })
+/**
+ * Main function that sets the event listeners to the dom nodes and
+ *   sets up the game for playing
+ */
+function main() {
+  $('#play-game').click(initGame)
+  $('#play-again').click(playAgain)
+  setRandomCards(gameStructure);
+  addPlayBehaviorToCards(gameStructure)
 }
-matchingGame(gameStructure)
+main()
