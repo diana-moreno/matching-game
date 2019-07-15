@@ -59,6 +59,7 @@ function checkIfPairs(game) {
       if(game[0].image === game[1].image) {
         game[i].status = 'pair'
         counterSucces += 0.5;
+        $('#matches').text('Matches: ' + counterSucces)
       } else {
         function callbackFunction() {
           $('#' + game[i].position + '> img.front').hide()
@@ -67,20 +68,20 @@ function checkIfPairs(game) {
         }
         var timeoutId = setTimeout(callbackFunction, 800)
         counterFailure += 0.5;
+        $('#failures').text('Failures: ' + counterFailure)
       }
     }
   }
-      console.log(gameStructure)
-      console.log(counterSucces)
-      console.log(counterFailure)
 }
 //función que comprueba cuando el usuario gana, que es cuando ha emparejado todas las cartas
 function checkIfWin(game) {
   let cardsPair = game.filter(elem => elem.status === 'pair')
   if(cardsPair.length === 24) {
     $('#win').attr('style', 'display: flex')
+    $('#win > h1').text('YOU WIN WITH ' + counterFailure + ' ATTEMPTS!')
     $('#container').hide()
-    $('body').attr('style', 'background-color : #750760')
+    $('body').attr('style', 'background-color : #750760; justify-content: center')
+    $('#points-container').hide()
   }
 }
 
@@ -90,8 +91,11 @@ function playAgain(game) {
     $('#win').hide();
     $('body').attr('style', 'background-image : url(./img/1769.jpg)')
     $('#container').attr('style', 'display : flex')
+    $('#points-container').attr('style', 'display : grid')
     counterSucces = 0
     counterFailure = 0
+    $('#matches').text('Matches: ' + counterSucces)
+    $('#failures').text('Failures: ' + counterFailure)
     game.forEach(elem => {
     elem.status = 'back';
     elem.image = 'new';
