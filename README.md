@@ -32,12 +32,14 @@ git clone https://github.com/diana-moreno/fairytale-matching-game.git
 
 ### **What I learned**
 
-- Acces and manipulate the DOM with jQuery.
+- Acces and manipulate the DOM with jQuery to select and trigger changes in the page.
 - Add effects with jQuery.
 - Achieve graphical behaviour throughout async and callback functions.
-- How to switch to the next screen game with JS and CSS.
+- Dynamically change the look of an HTML element.
 - Utilize  properly CSS Grid and Flex.
 - Mix javascript logic with mouse events and DOM dynamically.
+- Split code in different files to be more organized.
+
 
 ### **Resources**
 
