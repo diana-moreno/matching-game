@@ -25,7 +25,7 @@ If you’d like to view my project in your browser:
 ```bash
 git clone https://github.com/diana-moreno/fairytale-matching-game.git
 ```
-- Open calculator's folder.
+- Open fairytale-matching-game's folder.
 - Open index.html
 - Otherside, you can run the project here: https://diana-moreno.github.io/fairytale-matching-game/
 
