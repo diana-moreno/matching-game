@@ -43,4 +43,4 @@ git clone https://github.com/diana-moreno/fairytale-matching-game.git
 
 ### **Resources**
 
-- Designed by [freepik](www.freepik.com).
+- Designed by [freepik](https://www.freepik.com).
